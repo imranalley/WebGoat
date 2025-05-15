@@ -21,7 +21,7 @@ jobs:
     - name: Secret Scanning
       uses: trufflesecurity/trufflehog@main
       with:
-        extra_args: --regex --entrophy --json --no-verification
+        extra_args: --regex --entropy --json --no-verification
 
 
     # - name: scan-push
