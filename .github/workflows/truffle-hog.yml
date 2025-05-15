@@ -14,6 +14,10 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
+    - name: ls directory
+      run: ls -la
+    - name: cat vulnerabletaskholder.java
+      run: cat src/main/java/org/dummy/insecure/framework/VulnerableTaskHolder.java
     - name: Secret Scanning
       uses: trufflesecurity/trufflehog@main
       with:
