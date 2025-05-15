@@ -12,20 +12,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        ref: ${{ github.event.pull_request.head.sha }}
         fetch-depth: 0
-    - name: ls directory
-      run: ls -la
-    - name: cat vulnerabletaskholder.java
-      run: cat src/main/java/org/dummy/insecure/framework/VulnerableTaskHolder.java
-    # - name: Secret Scanning
-    #   uses: trufflesecurity/trufflehog@main
-    #   with:
-    #     extra_args: --no-verification
 
-    - name: scan-push
+    - name: Secret Scanning
       uses: trufflesecurity/trufflehog@main
       with:
-        base: ""
-        head: ${{ github.ref_branch }}
-        extra_args: --results=verified,unknown
+        extra_args: --no-verification
+
+    # - name: scan-push
+    #   uses: trufflesecurity/trufflehog@main
+    #   with:
+    #     base: ""
+    #     head: ${{ github.ref_branch }}
+    #     extra_args: --results=verified,unknown
