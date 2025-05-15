@@ -14,11 +14,15 @@ jobs:
       with:
         fetch-depth: 0
         ref: ${{ github.event.pull_request.head.ref }}
+    
+    - name: Debug Branch
+      run: git log --oneline && ls -la
 
     - name: Secret Scanning
       uses: trufflesecurity/trufflehog@main
       with:
-        extra_args: --no-verification
+        extra_args: --regex --entrophy --json --no-verification
+
 
     # - name: scan-push
     #   uses: trufflesecurity/trufflehog@main
