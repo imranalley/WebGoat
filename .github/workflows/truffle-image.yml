@@ -16,6 +16,8 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
+        path: test_keys
+
     
     # - name: Debug Branch
     #   run: |
@@ -24,5 +26,5 @@ jobs:
 
     - name: Secret Scanning
       run: |
-        trufflehog --scan . --no-verification
+        trufflehog git file://test_keys --results=verified,unknown
         
