@@ -1,0 +1,26 @@
+name: "TruffleHog Scan"
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: trufflesecurity/trufflehog:latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Debug Branch
+      run: git log --oneline && ls -la
+
+    - name: Secret Scanning
+      run: |
+        trufflehog --scan . --no-verification
+        
