@@ -1,4 +1,4 @@
-name: "TruffleHog Scan"
+name: "TruffleHog Docker Scan"
 on:
   pull_request:
     branches:
@@ -18,7 +18,9 @@ jobs:
         fetch-depth: 0
     
     - name: Debug Branch
-      run: git log --oneline && ls -la
+      run: |
+        git config --global --add safe.directory WebGoat
+        git log --oneline && ls -la
 
     - name: Secret Scanning
       run: |
