@@ -17,10 +17,10 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Debug Branch
-      run: |
-        git config --global --add safe.directory WebGoat
-        git log --oneline && ls -la
+    # - name: Debug Branch
+    #   run: |
+    #     git config --global --add safe.directory WebGoat
+    #     git log --oneline && ls -la
 
     - name: Secret Scanning
       run: |
