@@ -26,5 +26,6 @@ jobs:
 
     - name: Secret Scanning
       run: |
-        trufflehog git file://test_keys --no-verification -json
+        trufflehog --help
+        trufflehog git file://test_keys --no-verification --json
         
